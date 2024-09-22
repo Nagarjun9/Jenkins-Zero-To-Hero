@@ -1,20 +1,11 @@
 pipeline {
   agent none
-  stages {
-    stage('DB') {
-      agent {
-        docker { image 'oracle:latest' }
-      }
-      steps {
-        sh 'ps -ef |grep pmon;'
-      }
-    }
     stage('Back-end') {
       agent {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
       }
       steps {
-        sh 'mvn --version'
+        sh 'mvn test'
       }
     }
     stage('Front-end') {
@@ -22,7 +13,7 @@ pipeline {
         docker { image 'node:16-alpine' }
       }
       steps {
-        sh 'node --version'
+        sh 'node app.js'
       }
     }
   }

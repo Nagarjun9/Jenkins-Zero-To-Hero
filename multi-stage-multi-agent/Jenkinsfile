@@ -1,12 +1,12 @@
 pipeline {
   agent none
-   stage{
+  stages {
     stage('Back-end') {
       agent {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
       }
       steps {
-        sh 'mvn test'
+        sh 'mvn archetype:generate -DgroupId=com.example -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false'
       }
     }
     stage('Front-end') {

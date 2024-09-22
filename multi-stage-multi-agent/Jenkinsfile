@@ -3,10 +3,10 @@ pipeline {
   stages {
     stage('DB') {
       agent {
-        docker { image 'mysql:latest' }
+        docker { image 'oracle:latest' }
       }
       steps {
-        sh 'SELECT user FROM mysql.user;'
+        sh 'ps -ef |grep pmon;'
       }
     }
     stage('Back-end') {

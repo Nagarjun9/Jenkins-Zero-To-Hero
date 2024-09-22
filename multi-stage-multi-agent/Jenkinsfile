@@ -3,14 +3,6 @@ pipeline {
   stages {
     stage('Back-end') {
       agent {
-        docker { image 'oracle:19.3.0-doctorkirk' }
-      }
-      steps {
-        sh 'ps -ef |grep pmon'
-      }
-    }
-    stage('Back-end') {
-      agent {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
       }
       steps {

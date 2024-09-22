@@ -1,15 +1,14 @@
 pipeline {
   agent none
   stages {
-    stage('Database') {
+    stage('Back-end') {
       agent {
-        docker { image 'oralce:19.3-alpine' }
+        docker { image 'oracle:19.3.0-doctorkirk' }
       }
       steps {
         sh 'ps -ef |grep pmon'
       }
     }
-  stages {
     stage('Back-end') {
       agent {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }

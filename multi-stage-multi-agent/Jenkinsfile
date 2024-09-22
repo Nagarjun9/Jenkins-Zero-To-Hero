@@ -3,10 +3,10 @@ pipeline {
   stages {
     stage('DB') {
       agent {
-        docker { image 'oralce:latest' }
+        docker { image 'mysql:latest' }
       }
       steps {
-        sh 'SELECT user FROM mysql. user;'
+        sh 'SELECT user FROM mysql.user;'
       }
     }
     stage('Back-end') {
